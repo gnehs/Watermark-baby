@@ -75,13 +75,50 @@ export default {
 			if (filename.endsWith(".jpg") || filename.endsWith(".png")) {
 				this.filename = filename;
 				this.fileurl = URL.createObjectURL(file);
-				this.$emit("handleFileURL", this.fileurl);
+				//resize
+				this.resizeImg(this.fileurl);
 			} else {
-				alert("不支援的檔案");
+				alert("不支援該檔案格式！");
 			}
 		},
 		onDrop(val) {
 			this.isOnDrop = val;
+		},
+		resizeImg(fileurl) {
+			let img = document.createElement("img");
+			let vue = this;
+			img.src = fileurl;
+			img.onload = function (e) {
+				var canvas = document.createElement("canvas");
+				var ctx = canvas.getContext("2d");
+				ctx.drawImage(img, 0, 0);
+
+				var MAX_WIDTH = 1500;
+				var MAX_HEIGHT = 1500;
+				var width = img.width;
+				var height = img.height;
+
+				if (width > height) {
+					if (width > MAX_WIDTH) {
+						height *= MAX_WIDTH / width;
+						width = MAX_WIDTH;
+					}
+				} else {
+					if (height > MAX_HEIGHT) {
+						width *= MAX_HEIGHT / height;
+						height = MAX_HEIGHT;
+					}
+				}
+				canvas.width = width;
+				canvas.height = height;
+				var ctx = canvas.getContext("2d");
+				ctx.drawImage(img, 0, 0, width, height);
+
+				canvas.toBlob((blob) => {
+					let res = URL.createObjectURL(blob);
+					vue.$emit("handleFileURL", res);
+				});
+			};
 		},
 	},
 };
