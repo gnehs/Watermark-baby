@@ -170,9 +170,10 @@
         flex-direction: column
         .left,.right
             width: 100%
-            max-width: auto
+            max-width: 100%
         .left
             .watermark-preview
+                display: inline-block
                 img
                     max-height: 200px
                     width: auto
