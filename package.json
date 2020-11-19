@@ -11,6 +11,7 @@
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.2",
     "core-js": "^3.6.5",
+    "html2canvas": "^1.0.0-rc.7",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {

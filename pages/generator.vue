@@ -39,12 +39,7 @@
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
 						semper dui a pharetra lobortis.
 					</p>
-					<v-btn
-						rounded
-						color="primary"
-						style="min-width: 150px"
-						@click="step = 0"
-					>
+					<v-btn rounded color="primary" style="min-width: 150px">
 						下載圖片
 					</v-btn>
 					<v-btn
@@ -63,6 +58,7 @@
 </template>
 
 <script>
+import html2canvas from "html2canvas";
 export default {
 	data: () => ({
 		// 0:import_image --> 1:style_adjust --> 2:finish
