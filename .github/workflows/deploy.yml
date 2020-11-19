@@ -12,9 +12,9 @@ jobs:
       with:
         submodules: true
     - name: Setup Node
-      uses: actions/setup-node@v2.1.0
+      uses: actions/setup-node@v2-beta
       with:
-        node-version: '12.x'
+        node-version: '12'
     - name: Cache dependencies
       uses: actions/cache@v2
       with:
