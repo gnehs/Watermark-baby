@@ -3,12 +3,10 @@
 		class="upload-container"
 		:class="{ fileuploaded: fileurl, isOnDrop }"
 		@dragover="onDrop(true)"
-		@dragend="onDrop(false)"
-		@dragenter="onDrop(false)"
 		@drop="onDrop(false)"
 		@dragleave="onDrop(false)"
 	>
-		<div class="inner-container" v-if="!filename">
+		<div class="inner-container" v-if="!filename || isOnDrop">
 			<span v-if="!isOnDrop">點擊此處匯入圖片或將圖片拖移至此</span>
 			<span v-else>將圖片拖移至此放開</span>
 		</div>
@@ -21,23 +19,21 @@
 </template>
 <style lang="sass" scoped>
 .upload-container
-    background-color: #F2EAFF
     width: 100%
     text-align: center
     height: 150px
     border-width: 3px
     border-style: dashed
-    border-color: #9072C1
+    border-color: #CCC
     position: relative
     border-radius: 8px
     margin: 8px 0
     transition: all .25s ease
     &.fileuploaded
-        background-color: #FFF
-        border-color: #CCC
+        border-color: #DDD
     &.isOnDrop
         transform: scale(1.1)
-        background-color: #FFF
+        border-color: #666
         box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 22px 70px 4px rgba(0,0,0,0.23), 0 0 0 1px rgba(0, 0, 0, 0.0)
     .inner-container
         position: absolute
@@ -79,6 +75,7 @@ export default {
 			if (filename.endsWith(".jpg") || filename.endsWith(".png")) {
 				this.filename = filename;
 				this.fileurl = URL.createObjectURL(file);
+				this.$emit("handleFileURL", this.fileurl);
 			} else {
 				alert("不支援的檔案");
 			}

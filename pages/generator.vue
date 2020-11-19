@@ -8,12 +8,13 @@
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
 						semper dui a pharetra lobortis.
 					</p>
-					<file-upload />
+					<file-upload @handleFileURL="handleFileURL" />
 					<v-btn
 						rounded
 						color="primary"
 						style="min-width: 150px"
 						@click="step = 1"
+						:disabled="!fileurl"
 					>
 						下一步
 					</v-btn>
@@ -24,6 +25,11 @@
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
 						semper dui a pharetra lobortis.
 					</p>
+					<style-adjust
+						:fileurl="fileurl"
+						v-if="fileurl"
+						@handleDownloadUrl="handleDownloadUrl"
+					/>
 					<v-btn
 						rounded
 						color="primary"
@@ -39,7 +45,16 @@
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
 						semper dui a pharetra lobortis.
 					</p>
-					<v-btn rounded color="primary" style="min-width: 150px">
+					<img v-if="downloadurl" :src="downloadurl" width="100%" />
+					<a :href="downloadurl" download="s.png"> dl</a
+					><v-btn
+						rounded
+						color="primary"
+						style="min-width: 150px"
+						:to="downloadurl"
+						target="_blank"
+						download="s.png"
+					>
 						下載圖片
 					</v-btn>
 					<v-btn
@@ -58,14 +73,22 @@
 </template>
 
 <script>
-import html2canvas from "html2canvas";
 export default {
 	data: () => ({
 		// 0:import_image --> 1:style_adjust --> 2:finish
 		step: 0,
+		fileurl: null,
+		downloadurl: null,
 	}),
 	destroyed() {},
 	created() {},
-	methods: {},
+	methods: {
+		handleFileURL(url) {
+			this.fileurl = url;
+		},
+		handleDownloadUrl(url) {
+			this.downloadurl = url;
+		},
+	},
 };
 </script>
