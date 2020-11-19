@@ -8,6 +8,7 @@
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
 						semper dui a pharetra lobortis.
 					</p>
+					<file-upload />
 					<v-btn
 						rounded
 						color="primary"
