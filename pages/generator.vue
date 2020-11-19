@@ -1,6 +1,6 @@
 <template>
 	<v-row justify="center" align="center">
-		<v-col cols="10" sm="8" md="6" lg="4">
+		<v-col cols="10" sm="8" md="7" lg="6">
 			<transition name="fade" mode="out-in">
 				<div v-if="step == 0" key="import_image">
 					<h1>匯入圖片</h1>

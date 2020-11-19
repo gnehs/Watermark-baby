@@ -12,6 +12,7 @@
 						height: watermarkPreviewTextHeight + 'px',
 						width: watermarkPreviewTextWidth + 'px',
 						transform: `scale(${watermarkPreviewTextScale})`,
+						backgroundPosition: `${watermarkTextPositionx}px ${watermarkTextPositiony}px`,
 					}"
 				></div>
 			</div>
@@ -34,59 +35,91 @@
 					v-html="watermarkText"
 				></pre>
 			</div>
-			<v-color-picker
-				dot-size="25"
-				hide-canvas
-				hide-inputs
-				hide-mode-switch
-				show-swatches
-				swatches-max-height="100"
-				v-model="watermarkTextColor"
-			/>
-			<br />
-			<v-textarea
-				outlined
-				label="文字"
-				rows="2"
-				v-model="watermarkText"
-				hide-details
-				@change="genWatermark"
-			/>
-			<br />
-			<v-slider
-				label="大小"
-				hide-details
-				thumb-label
-				v-model="watermarkTextSize"
-				max="72"
-				min="1"
-				@change="genWatermark"
-			/>
-			<v-slider
-				label="邊距"
-				hide-details
-				thumb-label
-				v-model="watermarkTextPadding"
-				max="20"
-				min="0"
-				@change="genWatermark"
-			/>
-			<v-slider
-				label="旋轉"
-				hide-details
-				thumb-label
-				v-model="watermarkTextRotate"
-				max="45"
-				min="-45"
-				@change="genWatermark"
-			/>
-			<v-checkbox
-				v-model="watermarkStyle"
-				label="重複 - 讓浮水印重複出現"
-				value="repeat"
-				hide-details
-				@change="genWatermark"
-			/>
+			<v-expansion-panels>
+				<v-expansion-panel>
+					<v-expansion-panel-header> 文字與樣式 </v-expansion-panel-header>
+					<v-expansion-panel-content>
+						<v-color-picker
+							dot-size="25"
+							hide-canvas
+							hide-inputs
+							hide-mode-switch
+							show-swatches
+							swatches-max-height="100"
+							v-model="watermarkTextColor"
+						/>
+						<br />
+						<v-textarea
+							outlined
+							label="文字"
+							rows="2"
+							v-model="watermarkText"
+							hide-details
+							@change="genWatermark"
+						/>
+						<br />
+						<v-slider
+							label="大小"
+							hide-details
+							thumb-label
+							v-model="watermarkTextSize"
+							max="72"
+							min="1"
+							@change="genWatermark"
+						/>
+					</v-expansion-panel-content>
+				</v-expansion-panel>
+				<v-expansion-panel>
+					<v-expansion-panel-header> 距離與位置 </v-expansion-panel-header>
+					<v-expansion-panel-content>
+						<v-slider
+							v-if="watermarkPreviewTextHeight"
+							label="垂直位置"
+							hide-details
+							thumb-label
+							v-model="watermarkTextPositiony"
+							:max="watermarkPreviewTextHeight"
+							min="0"
+							@change="genWatermark"
+						/>
+						<v-slider
+							v-if="watermarkPreviewTextWidth"
+							label="水平位置"
+							hide-details
+							thumb-label
+							v-model="watermarkTextPositionx"
+							:max="watermarkPreviewTextWidth"
+							min="0"
+							@change="genWatermark"
+						/>
+						<v-slider
+							label="密度"
+							hide-details
+							thumb-label
+							v-model="watermarkTextPadding"
+							max="20"
+							min="0"
+							@change="genWatermark"
+						/>
+						<v-slider
+							label="旋轉"
+							hide-details
+							thumb-label
+							v-model="watermarkTextRotate"
+							max="45"
+							min="-45"
+							@change="genWatermark"
+						/>
+						<v-checkbox
+							v-model="watermarkStyle"
+							label="重複 - 讓浮水印重複出現"
+							value="repeat"
+							hide-details
+							@change="genWatermark"
+						/>
+					</v-expansion-panel-content>
+				</v-expansion-panel>
+			</v-expansion-panels>
 		</div>
 	</div>
 </template>
@@ -155,6 +188,8 @@ export default {
 		watermarkTextSize: 16,
 		watermarkTextPadding: 4,
 		watermarkTextRotate: 0,
+		watermarkTextPositiony: 0,
+		watermarkTextPositionx: 0,
 		watermarkPreview: null,
 		watermarkPreviewTextScale: null,
 		watermarkPreviewTextWidth: null,
@@ -191,6 +226,7 @@ export default {
 					{
 						backgroundColor: null,
 						scale: scaleSize,
+						imageTimeout: 0,
 					}
 				).then((canvas) =>
 					canvas.toBlob((blob) => {
@@ -212,6 +248,7 @@ export default {
 				html2canvas(document.querySelector(".watermark-preview"), {
 					useCORS: true,
 					scale: scaleSize,
+					imageTimeout: 0,
 				}).then((canvas) =>
 					canvas.toBlob((blob) => {
 						let res = URL.createObjectURL(blob);
