@@ -8,6 +8,12 @@
 					<file-upload @handleFileURL="handleFileURL" />
 				</div>
 				<div v-else-if="step == 1" key="style_adjust">
+					<a
+						class="wr-btn non-bg"
+						@click="step = 0"
+						style="text-align: left; margin-bottom: 8px; min-width: auto"
+						>⬅返回</a
+					>
 					<h1>調整樣式</h1>
 					<p>在這裡調整浮水印的樣式</p>
 					<style-adjust
@@ -15,15 +21,9 @@
 						v-if="fileurl"
 						@handleDownloadUrl="handleDownloadUrl"
 					/>
-					<v-btn text rounded color="primary" @click="step = 0"> 返回 </v-btn>
-					<v-btn
-						rounded
-						color="primary"
-						style="min-width: 150px"
-						@click="step = 2"
-					>
-						完成
-					</v-btn>
+					<div style="text-align: right">
+						<a class="wr-btn" @click="step = 2">完成</a>
+					</div>
 				</div>
 				<div v-else key="finish">
 					<h1>完成</h1>
@@ -32,26 +32,8 @@
 						iOS，請長按圖片來下載。
 					</p>
 					<img v-if="downloadurl" :src="downloadurl" width="100%" />
-					<a :href="downloadurl" download="s.png"> dl</a
-					><v-btn
-						rounded
-						color="primary"
-						style="min-width: 150px"
-						:to="downloadurl"
-						target="_blank"
-						download="s.png"
-					>
-						下載圖片
-					</v-btn>
-					<v-btn
-						text
-						rounded
-						color="primary"
-						style="min-width: 150px"
-						@click="step = 0"
-					>
-						繼續製作
-					</v-btn>
+					<a class="wr-btn" :href="downloadurl" download="s.png">下載圖片</a>
+					<a class="wr-btn non-bg" @click="step = 0">繼續製作</a>
 				</div>
 			</transition>
 		</v-col>
