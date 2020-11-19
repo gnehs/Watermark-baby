@@ -107,7 +107,7 @@
                 width: 100%
                 margin-bottom: -8px
             &.loading
-                opacity: .7
+                filter: blur(3px)
             .watermark-text-preview
                 width: 100%
                 height: 100%
