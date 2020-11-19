@@ -132,6 +132,17 @@
             position: relative
             pre
                 display: inline-block
+@media screen and(max-width: 512px)
+    .adjust-container
+        flex-direction: column
+        .left,.right
+            width: 100%
+            max-width: auto
+        .left
+            .watermark-preview
+                img
+                    max-height: 200px
+                    width: auto
 </style>
 <script>
 import html2canvas from "html2canvas";
@@ -139,7 +150,7 @@ export default {
 	name: "style-adjust",
 	data: () => ({
 		watermarkStyle: [],
-		watermarkText: "安安你好，幾歲？住哪？",
+		watermarkText: "僅供〇〇〇申辦使用",
 		watermarkTextColor: "#000C",
 		watermarkTextSize: 16,
 		watermarkTextPadding: 4,
@@ -179,13 +190,11 @@ export default {
 					document.querySelector(".adjust-container .watermark-text pre"),
 					{
 						backgroundColor: null,
-						logging: false,
 						scale: scaleSize,
 					}
 				).then((canvas) =>
 					canvas.toBlob((blob) => {
 						this.watermarkPreview = URL.createObjectURL(blob);
-
 						this.genNaturalSizeImg();
 					})
 				);
