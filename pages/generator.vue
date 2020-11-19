@@ -4,32 +4,18 @@
 			<transition name="fade" mode="out-in">
 				<div v-if="step == 0" key="import_image">
 					<h1>匯入圖片</h1>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-						semper dui a pharetra lobortis.
-					</p>
+					<p>於此匯入圖片開始製作浮水印吧！</p>
 					<file-upload @handleFileURL="handleFileURL" />
-					<v-btn
-						rounded
-						color="primary"
-						style="min-width: 150px"
-						@click="step = 1"
-						:disabled="!fileurl"
-					>
-						下一步
-					</v-btn>
 				</div>
 				<div v-else-if="step == 1" key="style_adjust">
 					<h1>調整樣式</h1>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-						semper dui a pharetra lobortis.
-					</p>
+					<p>在這裡調整浮水印的樣式</p>
 					<style-adjust
 						:fileurl="fileurl"
 						v-if="fileurl"
 						@handleDownloadUrl="handleDownloadUrl"
 					/>
+					<v-btn text rounded color="primary" @click="step = 0"> 返回 </v-btn>
 					<v-btn
 						rounded
 						color="primary"
@@ -42,8 +28,8 @@
 				<div v-else key="finish">
 					<h1>完成</h1>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-						semper dui a pharetra lobortis.
+						圖片產生完成！輕觸底下下載來取得圖片，如果您使用
+						iOS，請長按圖片來下載。
 					</p>
 					<img v-if="downloadurl" :src="downloadurl" width="100%" />
 					<a :href="downloadurl" download="s.png"> dl</a
@@ -85,6 +71,7 @@ export default {
 	methods: {
 		handleFileURL(url) {
 			this.fileurl = url;
+			this.step = 1;
 		},
 		handleDownloadUrl(url) {
 			this.downloadurl = url;
