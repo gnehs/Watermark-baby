@@ -10,3 +10,4 @@ npm-debug.log
 # Nuxt generate
 dist
 static/sw.js
+static/img/.DS_Store

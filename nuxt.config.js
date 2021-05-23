@@ -9,15 +9,19 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '浮水印寶寶',
     title: '浮水印寶寶',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { name: 'description', content: '協助您為重要證件圖片加上浮水印，防止遭他人盜用。' },
+      { property: 'og:title', content: '浮水印寶寶' },
+      { property: 'og:description', content: '協助您為重要證件圖片加上浮水印，防止遭他人盜用。' },
+      { property: 'og:site_name', content: '浮水印寶寶' },
+      { property: 'og:locale', content: 'zh_TW' },
+      { property: 'og:image', content: '/img/social.jpg' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/png', href: 'logo-small.png' }
     ]
   },
 
