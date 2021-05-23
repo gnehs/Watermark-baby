@@ -13,9 +13,9 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'description', content: '協助您為重要證件圖片加上浮水印，防止遭他人盜用。' },
+      { name: 'description', content: '「浮水印寶寶」可以協助您為重要證件圖片加上浮水印，防止遭他人盜用。' },
       { property: 'og:title', content: '浮水印寶寶' },
-      { property: 'og:description', content: '協助您為重要證件圖片加上浮水印，防止遭他人盜用。' },
+      { property: 'og:description', content: '「浮水印寶寶」可以協助您為重要證件圖片加上浮水印，防止遭他人盜用。' },
       { property: 'og:site_name', content: '浮水印寶寶' },
       { property: 'og:locale', content: 'zh_TW' },
       { property: 'og:image', content: '/img/social.jpg' },
