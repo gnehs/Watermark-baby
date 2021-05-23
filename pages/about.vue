@@ -7,7 +7,9 @@
                 <h2>製作浮水印會導致我個資外洩嗎？</h2>
                 <p>
                     浮水印寶寶運作過程皆在您的瀏覽器進行，並不會上傳至他處進行處理，若您有疑慮可至
-                    <a href="https://github.com/gnehs/gnehs.net" target="_blank"
+                    <a
+                        href="https://github.com/gnehs/Watermark-baby"
+                        target="_blank"
                         >GitHub</a
                     >
                     查看完整原始碼。
@@ -15,7 +17,9 @@
                 <h2>我有建議</h2>
                 <p>
                     我們歡迎各種建議，您可至
-                    <a href="https://github.com/gnehs/gnehs.net" target="_blank"
+                    <a
+                        href="https://github.com/gnehs/Watermark-baby"
+                        target="_blank"
                         >GitHub</a
                     >
                     建立新的 issue 和我們取得聯繫。
@@ -23,7 +27,9 @@
                 <h2>我找到 bug</h2>
                 <p>
                     若您發現 bug，可至
-                    <a href="https://github.com/gnehs/gnehs.net" target="_blank"
+                    <a
+                        href="https://github.com/gnehs/Watermark-baby"
+                        target="_blank"
                         >GitHub</a
                     >
                     建立新的 issue
