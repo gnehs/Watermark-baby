@@ -11,3 +11,4 @@ npm-debug.log
 dist
 static/sw.js
 static/img/.DS_Store
+.DS_Store

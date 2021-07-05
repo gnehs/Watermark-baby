@@ -21,7 +21,11 @@ export default {
       { property: 'og:image', content: '/img/social.jpg' },
     ],
     link: [
-      { rel: 'icon', type: 'image/png', href: 'logo-small.png' }
+      { rel: 'icon', type: 'image/png', href: 'logo-small.png' },
+      // https://fonts.google.com/specimen/Noto+Sans+TC
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+TC&display=swap' },
     ]
   },
 
