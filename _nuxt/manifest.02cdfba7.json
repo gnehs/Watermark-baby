@@ -1,0 +1,10 @@
+{
+  "name": "Watermark-baby",
+  "short_name": "Watermark-baby",
+  "description": "「浮水印寶寶」可以協助您將重要證件加上浮水印，以保護您的資料安全。",
+  "icons": [],
+  "start_url": "/Watermark-baby/?standalone=true",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "lang": "en"
+}
