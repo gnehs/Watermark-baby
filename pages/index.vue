@@ -2,7 +2,7 @@
     <v-row justify="center" align="center">
         <v-col cols="10" sm="8" md="6" lg="4">
             <div class="index-container">
-                <video width="256" height="256" autoplay loop muted>
+                <video class="video" autoplay loop muted>
                     <source src="logo.mp4" type="video/mp4">
                 </video>
                 <h1>浮水印寶寶</h1>
@@ -15,7 +15,12 @@
 </template>
 <style lang="sass" scoped>
 .index-container
-	text-align: center
+    text-align: center
+.video 
+    aspect-ratio: 1/1
+    width: 256px
+    max-width: 100%
+
 </style>
 <script>
 export default {};
